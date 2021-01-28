@@ -16,9 +16,9 @@ private int sgn(float r) {
 
 class Lantern {
   int bounds[];
-  color cf = color(210, 50, 40, 200); // Fill color
-  color cfDark = color(165, 40, 25, 180);
-  color cfDeep = color(240, 20, 20, 220);
+  color cf = color(250, 50, 40, 250); // Fill color
+  color cfDark = color(185, 40, 25, 200);
+  color cfDeep = color(210, 20, 20, 220);
   color cs = color(255, 210, 35); // Stroke color
   float[] segHeights = new float[3];
   int h; // Height
@@ -41,7 +41,7 @@ class Lantern {
     updateRotation();
     
     // Initialize draw settings
-    fill(165, 109, 109);
+    fill(230, 110, 110);
     stroke(cs);
     
     // Draw frame
@@ -55,7 +55,7 @@ class Lantern {
     rotate(rot);
     
     // Draw string
-    strokeWeight(5);
+    strokeWeight(3);
     stroke(cs);//stroke(0, 0, 0);
     line(0, 0, widths[0]*13.0/15, h/3.0);
     line(0, 0, -widths[0]*13.0/15, h/3.0);
@@ -95,14 +95,14 @@ class Lantern {
     if (rCompletion > 1) { // Set new rotation target upon completion
       //rotTarget = (random(ROT_MAX/2, ROT_MAX))*-1*sgn(rot); // New target should be on the "other side" of the swing
       rotTarget *= -1;
-      rot = clampRot(rot);
+      //rot = clampRot(rot);
     }
     // Update rotation
     // 0.2 value ensures there is always some progress made
     // 55.0 is a reciprocal speed scaling factor 
     //rot += sgn(rotTarget) * ((ROT_MAX*(1.0-clamp(abs(rCompletion), 0, 1))+0.2)/55.0);
     // Slower for larger: (((15.0*MAX_H-h*1.0)/(15*MAX_H))) *
-    rot += sgn(rotTarget) * ((1.0 - clamp(abs(rot/ROT_MAX), 0, 0.85))/55.0);
-    println(rot + " " + rotTarget + " " + rCompletion);
+    rot += sgn(rotTarget) * ((1.0 - clamp(abs(rot/ROT_MAX), 0, 0.85))/32.0);
+    //println(rot + " " + rotTarget + " " + rCompletion);
   }
 }

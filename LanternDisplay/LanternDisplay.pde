@@ -1,11 +1,12 @@
 ArrayList<Lantern> lanterns = new ArrayList<Lantern>();
 
 void setup() {
-  fullScreen();
-  //randomSeed(0);
-  lanterns.add(new Lantern(new int[] {150, 150, 300, 900}));
-  lanterns.add(new Lantern(new int[] {650, 150, 300, 900}));
-  lanterns.add(new Lantern(new int[] {1150, 150, 300, 900}));
+  size(800, 600);//fullScreen();
+  frameRate(30); // Run at half framerate for efficiency
+  randomSeed(25);
+  lanterns.add(new Lantern(new int[] {40, 50, 250, 500}));
+  lanterns.add(new Lantern(new int[] {280, 50, 250, 500}));
+  lanterns.add(new Lantern(new int[] {520, 50, 250, 500}));
 }
 
 void draw() {
