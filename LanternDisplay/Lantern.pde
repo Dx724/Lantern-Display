@@ -45,7 +45,7 @@ class Lantern {
     stroke(cs);
     
     // Draw frame
-    strokeWeight(20);
+    noStroke();//strokeWeight(1);
     rect(bounds[0], bounds[1], bounds[2], bounds[3]);
     
     // Draw lantern assembly
