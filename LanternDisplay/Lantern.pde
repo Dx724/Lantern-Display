@@ -19,7 +19,7 @@ class Lantern {
   color cf = color(210, 50, 40, 200); // Fill color
   color cfDark = color(165, 40, 25, 180);
   color cfDeep = color(240, 20, 20, 220);
-  color cs = color(255, 255, 5); // Stroke color
+  color cs = color(255, 210, 35); // Stroke color
   float[] segHeights = new float[3];
   int h; // Height
   float rot = radians(0); // Current rotation
@@ -56,7 +56,7 @@ class Lantern {
     
     // Draw string
     strokeWeight(5);
-    stroke(0, 0, 0);
+    stroke(cs);//stroke(0, 0, 0);
     line(0, 0, widths[0]*13.0/15, h/3.0);
     line(0, 0, -widths[0]*13.0/15, h/3.0);
     translate(0, h/3.0);
