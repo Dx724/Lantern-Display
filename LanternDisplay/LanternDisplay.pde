@@ -1,9 +1,9 @@
 ArrayList<Lantern> lanterns = new ArrayList<Lantern>();
 
 void setup() {
-  fullScreen(); //size(1920, 1080);
+  fullScreen();
+  //randomSeed(0);
   lanterns.add(new Lantern(new int[] {150, 150, 300, 900}));
-  randomSeed(0);
 }
 
 void draw() {
