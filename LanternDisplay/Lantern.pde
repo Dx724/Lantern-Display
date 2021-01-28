@@ -41,7 +41,7 @@ class Lantern {
     updateRotation();
     
     // Initialize draw settings
-    fill(230, 110, 110);
+    fill(0, 0, 0);//fill(230, 110, 110);
     stroke(cs);
     
     // Draw frame
