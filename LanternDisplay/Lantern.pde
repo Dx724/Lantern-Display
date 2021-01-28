@@ -18,11 +18,11 @@ class Lantern {
   color cf = color(210, 50, 40, 200); // Fill color
   color cfDark = color(165, 40, 25, 180);
   color cfDeep = color(240, 20, 20, 220);
-  color cs = color(200, 200, 35); // Stroke color
+  color cs = color(255, 255, 5); // Stroke color
   float[] segHeights = new float[3];
   int h; // Height
   float rot = radians(0); // Current rotation
-  float rotTarget = sgn(random(-1, 1))*random(ROT_MAX*0.65, ROT_MAX);
+  float rotTarget;
   
   public Lantern(int[] bounds) {
     if (bounds.length != 4) {
@@ -33,29 +33,40 @@ class Lantern {
     segHeights[2] = random(0.6, 0.9);
     segHeights[1] = random(segHeights[0] + 0.05, segHeights[2] - 0.05);
     h = (int) random(150, 250);
+    rotTarget = sgn(random(-1, 1))*random(ROT_MAX*0.70, ROT_MAX);
   }
   public void draw() {
     // Updates
     updateRotation();
     
     // Initialize draw settings
-    fill(255, 130, 130);
+    fill(165, 109, 109);
     stroke(cs);
     
     // Draw frame
-    strokeWeight(10);
+    strokeWeight(20);
     rect(bounds[0], bounds[1], bounds[2], bounds[3]);
     
-    // Draw lantern
+    // Draw lantern assembly
     fill(cfDeep);
     pushMatrix();
-    noStroke();
-    translate(bounds[0]+bounds[2]/2.0, bounds[1]+bounds[3]/5.0);
+    translate(bounds[0]+bounds[2]/2.0, bounds[1]+bounds[3]/6.0);
     rotate(rot);
+    
+    // Draw string
+    strokeWeight(5);
+    stroke(0, 0, 0);
+    line(0, 0, widths[0]*13.0/15, h/3.0);
+    line(0, 0, -widths[0]*13.0/15, h/3.0);
+    translate(0, h/3.0);
+    
+    // Draw lantern
+    noStroke();
     drawHalf();
     scale(-1, 1);
     drawHalf();
     illuminate();
+    
     popMatrix();
   }
   private void drawHalf() {
@@ -89,7 +100,7 @@ class Lantern {
     // 0.2 value ensures there is always some progress made
     // 55.0 is a reciprocal speed scaling factor 
     //rot += sgn(rotTarget) * ((ROT_MAX*(1.0-clamp(abs(rCompletion), 0, 1))+0.2)/55.0);
-    rot += sgn(rotTarget) * (1.0 - clamp(abs(rot/ROT_MAX), 0, 0.8))/55.0;
+    rot += sgn(rotTarget) * (1.0 - clamp(abs(rot/ROT_MAX), 0, 0.85))/55.0;
     println(rot + " " + rotTarget + " " + rCompletion);
   }
 }
