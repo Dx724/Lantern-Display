@@ -1,5 +1,6 @@
 final int[] widths = new int[] {50, 70, 95, 70, 50};
 final float ROT_MAX = radians(35);
+final int MAX_H = 225;
 
 private float clampRot(float r) {
   return clamp(r, -ROT_MAX, ROT_MAX);
@@ -32,8 +33,8 @@ class Lantern {
     segHeights[0] = random(0.1, 0.4);
     segHeights[2] = random(0.6, 0.9);
     segHeights[1] = random(segHeights[0] + 0.05, segHeights[2] - 0.05);
-    h = (int) random(150, 250);
-    rotTarget = sgn(random(-1, 1))*random(ROT_MAX*0.70, ROT_MAX);
+    h = (int) random(150, MAX_H);
+    rotTarget = sgn(random(-1, 1))*random(ROT_MAX*0.80, ROT_MAX);
   }
   public void draw() {
     // Updates
@@ -100,7 +101,8 @@ class Lantern {
     // 0.2 value ensures there is always some progress made
     // 55.0 is a reciprocal speed scaling factor 
     //rot += sgn(rotTarget) * ((ROT_MAX*(1.0-clamp(abs(rCompletion), 0, 1))+0.2)/55.0);
-    rot += sgn(rotTarget) * (1.0 - clamp(abs(rot/ROT_MAX), 0, 0.85))/55.0;
+    // Slower for larger: (((15.0*MAX_H-h*1.0)/(15*MAX_H))) *
+    rot += sgn(rotTarget) * ((1.0 - clamp(abs(rot/ROT_MAX), 0, 0.85))/55.0);
     println(rot + " " + rotTarget + " " + rCompletion);
   }
 }
