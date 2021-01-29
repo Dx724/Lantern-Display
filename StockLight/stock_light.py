@@ -78,6 +78,15 @@ def check_price():
         print(pr)
         return pr
 
+# Wait for Wi-Fi connection
+do_set_lights([(255, 255, 0)] * 8)
+while True:
+    try:
+        r = requests.head("https://www.alphavantage.co", timeout=5)
+        break
+    except requests.ConnectionError as ex:
+        pass
+
 set_lights(0) # Blue loading state
 price = check_price()
 while True:
