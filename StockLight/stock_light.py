@@ -12,6 +12,33 @@ TICKER = "GME"
 last_price = -1
 price = -1
 
+BLUE_ALL = [(65, 50, 225)] * 8
+OFF_ALL = [(0, 0, 0)] * 8
+
+def pct_to_disp(last, current):
+    pct = current / last
+    return round(abs(pct-1.0)*100*(1 if pct > 1 else -1))
+
+def get_color_for_code(code):
+    # Red for loss, green for gain
+    return (255,
+         255 if code > 0 else 100 + 20*abs(code),
+         100 + 20*abs(code))
+
+def do_set_lights(color_arr):
+    for i in range(8):
+        pixels[i] = color_arr[i]
+
+def set_lights(disp_code):
+    if (disp_code == 0):
+        do_set_lights(BLUE_ALL)
+    else:
+        c_arr = OFF_ALL[:] # Copy blank to modify
+        for i in range(4):
+            j = i + 4 if disp_code > 0 else 3 - i
+            c_arr[j] = get_color_for_code(i if disp_code > 0 else -i)
+        do_set_lights(c_arr)
+
 '''
 req = requests.get("https://www.alphavantage.co/query", {
         "function": "GLOBAL_QUOTE", "symbol": TICKER, "apikey": secret
@@ -47,33 +74,6 @@ def check_price():
         price = response["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
         pr = float(price)
         return pr
-
-def pct_to_disp(last, current):
-    pct = current / last
-    return round(abs(pct-1.0)*100*(1 if pct > 1 else -1))
-
-def get_color_for_code(code):
-    # Red for loss, green for gain
-    return (255,
-         255 if code > 0 else 100 + 20*abs(code),
-         100 + 20*abs(code))
-
-BLUE_ALL = [(65, 50, 225)] * 8
-OFF_ALL = [(0, 0, 0)] * 8
-
-def do_set_lights(color_arr):
-    for i in range(8):
-        pixels[i] = color_arr[i]
-
-def set_lights(disp_code):
-    if (disp_code == 0):
-        do_set_lights(BLUE_ALL)
-    else:
-        c_arr = OFF_ALL[:] # Copy blank to modify
-        for i in range(4):
-            j = i + 4 if disp_code > 0 else 3 - i
-            c_arr[j] = get_color_for_code(i if disp_code > 0 else -i)
-        do_set_lights(c_arr)
 
 price = check_price()
 while True:
