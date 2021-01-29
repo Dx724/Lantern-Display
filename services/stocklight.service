@@ -1,0 +1,9 @@
+[Unit]
+Description=Control NeoPixels to reflect market fluctuations
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/ces/Lantern-Display/StockLight/stock_light.py
+
+[Install]
+WantedBy=multi-user.target
