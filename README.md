@@ -16,7 +16,6 @@ This installation aims to illustrate such an incongruity by placing an LED modul
   - [Hardware](#hardware)
   - [Wiring](#wiring)
   - [Software Dependencies](#software-dependencies)
-  - [Setup Process](#setup-process)
   - [Market API](#market-api)
   - [Running manually](#running-manually)
   - [Run on boot](#run-on-boot)
@@ -48,7 +47,6 @@ The following dependencies are used by the programs in this repository. It is po
 - Alpha Vantage API key
     - Can be obtained from [here](https://www.alphavantage.co/) for free
 
-## Setup Process
 ## Market API
 1. Create a file called `secret.txt` in the `/StockLight` directory and paste your Alpha Vantage API key into it (see [Dependencies](#dependencies) for more info).
 
@@ -56,6 +54,8 @@ The following dependencies are used by the programs in this repository. It is po
 To start the lantern display, run `processing-java --sketch=LanternDisplay --run` from the root directory. If `processing-java` is not on your path, replace it within the command with the full path to `processing-java`.
 
 To start the NeoPixel component of the display, change into the `/StockLight` directory and run `sudo python3 stock_light.py`. Note that `sudo` is necessary in order to allow the program to communicate with the NeoPixels.
+
+Upon startup, the lights will shine yellow to indicate the device is waiting for an internet connection. Once connected, the lights will change to blue, indicating data collection is ongoing. A minute later, the LEDs should update to reflect the changing prices.
 
 ## Run on boot
 `systemd` is required to configure your Raspberry Pi to run these programs upon startup.
