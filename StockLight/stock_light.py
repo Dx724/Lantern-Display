@@ -13,6 +13,8 @@ price = -1
 
 BLUE_ALL = [(65, 50, 225)] * 8
 OFF_ALL = [(0, 0, 0)] * 8
+COLOR_VALS = [235, 215, 195, 175]
+COLOR_BLUE = [0, 15, 55, 90]
 
 def pct_to_disp(last, current):
     pct = current / last
@@ -20,9 +22,9 @@ def pct_to_disp(last, current):
 
 def get_color_for_code(code):
     # Red for loss, green for gain
-    return (255,
-         255 if code > 0 else 100 + 20*abs(code),
-         100 + 20*abs(code))
+    return (0 if code > 0 else COLOR_VALS[abs(code)-1],
+         0 if code < 0 else COLOR_VALS[abs(code)-1],
+         COLOR_BLUE[abs(code)-1])
 
 def do_set_lights(color_arr):
     for i in range(8):
@@ -35,7 +37,7 @@ def set_lights(disp_code):
         c_arr = OFF_ALL[:] # Copy blank to modify
         for i in range(abs(disp_code)):
             j = i + 4 if disp_code > 0 else 3 - i
-            c_arr[j] = get_color_for_code(i if disp_code > 0 else -i)
+            c_arr[j] = get_color_for_code(i+1 if disp_code > 0 else -i-1)
         print(c_arr)
         do_set_lights(c_arr)
 
@@ -76,7 +78,7 @@ def check_price():
         print(pr)
         return pr
 
-set_lights(2) # Blue loading state
+set_lights(0) # Blue loading state
 price = check_price()
 while True:
     last_price = price
