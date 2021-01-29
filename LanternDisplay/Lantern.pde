@@ -41,12 +41,14 @@ class Lantern {
     updateRotation();
     
     // Initialize draw settings
-    fill(0, 0, 0);//fill(230, 110, 110);
-    stroke(cs);
+    //fill(0, 0, 0);//fill(230, 110, 110);
+    //stroke(cs);
     
+    /*
     // Draw frame
     noStroke();//strokeWeight(1);
     rect(bounds[0], bounds[1], bounds[2], bounds[3]);
+    */
     
     // Draw lantern assembly
     fill(cfDeep);
