@@ -1,14 +1,25 @@
-# Lantern Display <!-- no toc -->
+# Lantern Display <!-- omit in toc -->
 Excited for Lunar New Year but don't have any decorations? Look no further! This program generates digital lanterns which can be projected directly onto your windows. The lanterns sway rhythmically and juxtapose their physical surroundings, bringing a modern spin to your traditional festivities.
 
-## Background <!-- no toc -->
+## Background <!-- omit in toc -->
 The Lunar New Year is a time of rest and celebration for people all around the world. In many parts of Asia, it is celebrated by an entire week off of work, providing adults with time to clean, cook, and spend time with family.
 
 Yet, the world does not come to a halt. Admist all of the relaxing quality time with family and friends is the never-ending world of work. In the Americas, where a week of vacation isn't provided for such an occasion, families are forced to budget their time, upholding traditions while continuing to learn, study, and earn a living.
 
 This installation aims to illustrate such an incongruity by placing an LED module alongside the lanterns which reflects changes in the market (specifically, Bitcoin). While the lanterns are generated in a mathematically random manner, the Bitcoin pricing is sourced directly from actual real-time data. However, as one observes the installation, they may realize that the randomness of the lanterns becomes a comfortable sight. The Bitcoin prices, however, appear to be completely unpredictable. With so much of the world out of our control, we must keep what truly matters in mind.
 
-# Table of Contents <!-- no toc -->
+# Table of Contents <!-- omit in toc -->
+- [Setup](#setup)
+  - [Hardware](#hardware)
+  - [Wiring](#wiring)
+  - [Software Dependencies](#software-dependencies)
+  - [Setup Process](#setup-process)
+  - [Market API](#market-api)
+  - [Running manually](#running-manually)
+  - [Run on boot](#run-on-boot)
+- [Customization](#customization)
+  - [Adjusting the Lantern Display](#adjusting-the-lantern-display)
+  - [Adjusting the Market Display](#adjusting-the-market-display)
 
 # Setup
 ## Hardware
@@ -48,7 +59,7 @@ To start the NeoPixel component of the display, change into the `/StockLight` di
 To set up the programs to run on boot, copy the files in the `/services` directory to `/lib/systemd/system/`. For example, from within the `/services` directory, run
 
     sudo cp *.service /lib/systemd/system/
-If necessary, modify the files `/services/lanterndisplay.service` and `/services/stocklight.service` with a text editor to contain the appropriate paths to `python3`, `processing-java`, and the code files from this repository.
+If necessary, modify the files `/services/lanterndisplay.service` and `/services/stocklight.service` with a text editor to contain the appropriate paths to `python3`, `processing-java`, and the **code files** from this repository.
 Have your system recognize the services with the command:
 
     sudo systemctl daemon-reload
