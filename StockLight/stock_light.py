@@ -1,12 +1,11 @@
-import requests, time, board, time, neopixel
+import requests, time, board, time, neopixel, math
 
 # Load API key from file
 with open("secret.txt", "r") as f:
     secret = f.read().replace("\n", "")
 
 # Initialize lights
-pixels = neopixel.NeoPixel(board.D18, 30)
-set_lights(0) # Blue loading state
+pixels = neopixel.NeoPixel(board.D18, 8, brightness=0.01)
 
 TICKER = "GME"
 last_price = -1
@@ -17,7 +16,7 @@ OFF_ALL = [(0, 0, 0)] * 8
 
 def pct_to_disp(last, current):
     pct = current / last
-    return round(abs(pct-1.0)*100*(1 if pct > 1 else -1))
+    return min(math.ceil(abs(pct-1.0)*100),4)*(1 if pct > 1 else -1)
 
 def get_color_for_code(code):
     # Red for loss, green for gain
@@ -34,9 +33,10 @@ def set_lights(disp_code):
         do_set_lights(BLUE_ALL)
     else:
         c_arr = OFF_ALL[:] # Copy blank to modify
-        for i in range(4):
+        for i in range(abs(disp_code)):
             j = i + 4 if disp_code > 0 else 3 - i
             c_arr[j] = get_color_for_code(i if disp_code > 0 else -i)
+        print(c_arr)
         do_set_lights(c_arr)
 
 '''
@@ -73,8 +73,10 @@ def check_price():
         '''
         price = response["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
         pr = float(price)
+        print(pr)
         return pr
 
+set_lights(2) # Blue loading state
 price = check_price()
 while True:
     last_price = price
