@@ -5,7 +5,7 @@ with open("secret.txt", "r") as f:
     secret = f.read().replace("\n", "")
 
 # Initialize lights
-pixels = neopixel.NeoPixel(board.D18, 8, brightness=0.01)
+pixels = neopixel.NeoPixel(board.D18, 8, brightness=1.0)
 
 TICKER = "GME"
 last_price = -1
