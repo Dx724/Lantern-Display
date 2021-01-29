@@ -41,13 +41,13 @@ def set_lights(disp_code):
         print(c_arr)
         do_set_lights(c_arr)
 
-'''
+''' For stocks:
 req = requests.get("https://www.alphavantage.co/query", {
         "function": "GLOBAL_QUOTE", "symbol": TICKER, "apikey": secret
     })
 '''
 
-'''
+''' For stock time-series:
         "function": "TIME_SERIES_INTRADAY", "symbol": TICKER, "apikey": secret,
         "interval": "1min", "outputsize": "compact", "datatype": "json"
 '''
@@ -63,8 +63,8 @@ def check_price():
         return -1
     else:
         response = req.json()
-        #price = response["Global Quote"]["05. price"]
-        '''
+        #price = response["Global Quote"]["05. price"] # For stocks
+        ''' For stock time-series:
         # Note that while dictionaries are ordered in Python 3.7+, this is
         # simply an implementation detail. Thus, use OrderedDict to ensure
         # compatibility with past and future versions.
