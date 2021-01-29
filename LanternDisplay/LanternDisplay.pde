@@ -2,7 +2,7 @@ ArrayList<Lantern> lanterns = new ArrayList<Lantern>();
 
 void setup() {
   fullScreen();
-  noCursor();`  
+  noCursor();  
   frameRate(30); // Run at half framerate for efficiency
   randomSeed(25);
   lanterns.add(new Lantern(new int[] {0, 50, 230, 500}));

@@ -4,7 +4,7 @@ Description=Start lantern display
 [Service]
 Environment=DISPLAY=:0
 Environment=XAUTHORITY=/home/pi/.Xauthority
-ExecStart=/usr/pi/Documents/ces2021/processing-3.5.3/processing-java --sketch=/home/pi/ces/Lantern-Display/LanternDisplay --run
+ExecStart=/home/pi/Documents/processing-3.5.3/processing-java --sketch=/home/pi/ces/Lantern-Display/LanternDisplay --run
 Restart=always
 RestartSec=10s
 KillMode=process
