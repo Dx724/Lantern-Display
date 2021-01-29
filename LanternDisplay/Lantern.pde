@@ -44,9 +44,10 @@ class Lantern {
     //fill(0, 0, 0);//fill(230, 110, 110);
     //stroke(cs);
     
+    /* ### UNCOMMENT SECTION BELOW TO VIEW ALIGNMENT FRAMES ### */
     /*
-    // Draw frame
-    noStroke();//strokeWeight(1);
+    stroke(cs);
+    strokeWeight(1);
     rect(bounds[0], bounds[1], bounds[2], bounds[3]);
     */
     
