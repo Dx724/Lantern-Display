@@ -5,11 +5,13 @@ final int MAX_H = 225;
 private float clampRot(float r) {
   return clamp(r, -ROT_MAX, ROT_MAX);
 }
+
 private float clamp(float r, float low, float high) {
   if (r > high) return high;
   else if (r < low) return low;
   else return r;
 }
+
 private int sgn(float r) {
   return r >= 0 ? 1 : -1;
 }
@@ -39,10 +41,6 @@ class Lantern {
   public void draw() {
     // Updates
     updateRotation();
-    
-    // Initialize draw settings
-    //fill(0, 0, 0);//fill(230, 110, 110);
-    //stroke(cs);
     
     /* ### UNCOMMENT SECTION BELOW TO VIEW ALIGNMENT FRAMES ### */
     /*
@@ -96,16 +94,13 @@ class Lantern {
   private void updateRotation() {
     float rCompletion = rot*1.0/rotTarget;
     if (rCompletion > 1) { // Set new rotation target upon completion
-      //rotTarget = (random(ROT_MAX/2, ROT_MAX))*-1*sgn(rot); // New target should be on the "other side" of the swing
-      rotTarget *= -1;
-      //rot = clampRot(rot);
+      rotTarget *= -1; // New target should be on the "other side" of the swing
     }
     // Update rotation
-    // 0.2 value ensures there is always some progress made
-    // 55.0 is a reciprocal speed scaling factor 
-    //rot += sgn(rotTarget) * ((ROT_MAX*(1.0-clamp(abs(rCompletion), 0, 1))+0.2)/55.0);
-    // Slower for larger: (((15.0*MAX_H-h*1.0)/(15*MAX_H))) *
+    // Should always move towards the target (sgn indicates direction)
+    // Should move faster when near the bottom of the swing (1.0 - ...)
+    // Should never stop moving completely so simulation remains dynamic (clamp to 1.0-0.85 minimum)
+    // 32.0 is a scaling factor determined experimentally
     rot += sgn(rotTarget) * ((1.0 - clamp(abs(rot/ROT_MAX), 0, 0.85))/32.0);
-    //println(rot + " " + rotTarget + " " + rCompletion);
   }
 }
