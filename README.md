@@ -1,5 +1,5 @@
 # Lantern Display <!-- omit in toc -->
-Excited for Lunar New Year but don't have any decorations? Look no further! This program generates digital lanterns which can be projected directly onto your windows. The lanterns sway rhythmically and juxtapose their physical surroundings, bringing a modern spin to your traditional festivities.
+Excited for Lunar New Year but don't have any decorations? Look no further! This program generates digital lanterns which can be projected directly onto your windows. The lanterns sway rhythmically and juxtapose their physical surroundings, bringing a modern spin to your traditional festivities. At the same time, a connected group of LEDs signals changes in the market, showing between one and four green or red lights to represent gains and losses.
 
 ## Background <!-- omit in toc -->
 The Lunar New Year is a time of rest and celebration for people all around the world. In many parts of Asia, it is celebrated by an entire week off of work, providing adults with time to clean, cook, and spend time with family.
