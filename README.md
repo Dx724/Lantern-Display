@@ -72,6 +72,8 @@ Then, enable the services as follows:
     sudo systemctl enable stocklight.service
 Upon restarting (e.g., `sudo reboot`), the programs should run.
 
+Note that `sudo systemctl disable <service_name>.service` can be used to disable these services from loading at startup and `sudo systemctl stop <service_name>.service` can be used to stop the services immediately (where `<service_name>` is `lanterndisplay` or `stocklight`).
+
 # Customization
 ## Adjusting the Lantern Display
 Each lantern in the display is a self-contained object. Thus, the number and positioning of the lanterns can be easily changed. To do so, simply go to the section of `/LanternDisplay/LanternDisplay.pde` and follow the examples provided in the section labelled `CREATE AND MODIFY LANTERNS HERE`.
