@@ -1,4 +1,4 @@
-import requests, time, board, time, neopixel, math
+import requests, time, board, neopixel, math
 
 # Load API key from file
 with open("secret.txt", "r") as f:
